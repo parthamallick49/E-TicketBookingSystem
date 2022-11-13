@@ -12,15 +12,54 @@ wellcome_message(){
 	echo "			************************************"
 }
 
+
+	
+
+
 # ======================== *** User Section *** =======================
 
-user(){
-	# IN CONSTRUCTION
+userSection(){
+	echo "	======================== *** User Section *** ===================="
+	
+	## This section is under maintenance
 }
+
+
+
+
+
+# ======================== *** Authority Section *** =======================
+
+authoritySection(){
+	echo "	======================== *** Authority Section *** ===================="
+	
+	availableSit=0
+	i=0
+	while [ $i -le 9 ]
+	do
+		if [ ${!busSit[$i]} -e 0 ]
+		then
+			availableSit=$((availableSit + 1))
+		fi
+	i=$((i + 1))
+	done
+	
+	
+	echo "			Total available sit right now is: $availableSit"
+	
+	
+}
+
+
 
 
 mainfun(){
 	wellcome_message
+	
+
+	declare -A busSit={0 0 0 0 0 0 0 0 0}       ## 0 means the sit is available
+					   ## 1 means the sit is not available
+	
 	
 	while true
 	do
@@ -38,9 +77,9 @@ mainfun(){
 		read userChoise
 		
 		if [ $userChoise -eq 1 ]; then
-			user
+			userSection
 		elif [ $userChoise -eq 2 ]; then
-			authority
+			authoritySection
 		elif [ $userChoise -eq 0 ]; then
 			exit 
 		else 
@@ -52,4 +91,3 @@ mainfun(){
 }
 
 mainfun 
-
